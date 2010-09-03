@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link href='/images/favicon.ico' rel='shortcut icon' />  
+	<title>Trombinoscope</title> 
+	<%= stylesheet_link_tag "trombi", :media => "all" %>
+</head> 
+<body> 
+
+<div class='container'> 
+
+<div class='header'> 
+
+<h1><%= link_to(image_tag("logo.png"), "/" ) %></h1> 
+<ol class='global_navigation'> 
+
+<%if session[:user_id]!=nil %>
+<li><%=User.find_by_id(session[:user_id]).name %> (<%= link_to "My account" , {:controller => "trombi", :action => "account"} %>) </li>
+<li><%= link_to "Log out", {:controller => "trombi", :action => "logout"} %></li>
+<% else %>
+<li><%= link_to "Log in", {:controller => "trombi", :action => "login"} %></li>
+<% end %> 
+                
+</ol>
+
+</div> 
+<!-- fin header --> 
+
+
+<div class="navigation"> 
+<div class="main">
+
+<ul>
+<li class="nav_tab_container"><%= link_to "Home", {:controller =>"trombi", :action=>"index"}, :class=>"nav_tab active" %></li>
+<%if session[:user_id]!=nil %>
+<% if User.find_by_id(session[:user_id]).level>0 %>
+<li class="nav_tab_container"><%= link_to "Administration", :controller=>"people", :action =>"index" %></li>
+<% end %>
+<% end %>
+</ul>
+
+</div>
+</div> 
+
+<div class='wrapper'> 
+<div class="project_navigation">
+
+	<div class="project">
+	<ul>
+	
+	<%= render(:partial => "controller_menu_actions") %>
+	
+	<li class="right_side">
+
+			<% form_tag "/trombi/search", :method => 'get' do %>
+			  <%= text_field_tag :search, params[:search], :id => "search-text", :size => "15" %>
+			    <%= submit_tag "Search", :name => nil, :id => "search-submit", :value => "GO" %>
+			<% end %>
+ </li>
+	</ul>
+</div>
+<div class="clear"></div>
+</div> 
+
+<div class='content_wrap'> 
+<div class='content' id='content'>
+
+<% if flash[:notice] %>
+	<div id="notice"><%= flash[:notice] %></div>
+<% end %>
+		
+		<%= yield :layout %>
+
+</div> 
+</div> 
+
+
+<div id='footer'> 
+Footer of trombinoscope, realized by PAB
+</div> 
+ 
+</div> 
+<!-- fin container --> 
+
+</body> 
+</html> 

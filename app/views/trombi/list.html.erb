@@ -1,0 +1,26 @@
+<div id="person-list">
+<h2>Listing people</h2>
+
+<table>
+  <tr class="list-line-header">
+    <th>Picture</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th></th>
+  </tr>
+
+<% @people.each do |person| %>
+  <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td><%= image_tag person_path(person, :jpg), :style => "height:100px;" %></td>
+    <td><%=h person.first_name %></td>
+    <td><%=h person.last_name %></td>
+    <td><%= auto_link_email_addresses person.email %></td>
+    <td class="list-actions">
+    <%= link_to "Show more details", :action => "show_details", :id => person %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+</div>

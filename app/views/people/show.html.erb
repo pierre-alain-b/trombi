@@ -1,0 +1,47 @@
+<h1>Manage the trombi - Show an existing person information</h1>
+
+<div id="commands">
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
+</div>
+
+<p>
+  <b>First name:</b>
+  <%=h @person.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @person.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @person.email %>
+</p>
+
+<p>
+  <b>Phone1:</b>
+  <%=h @person.phone1 %>
+</p>
+
+<p>
+  <b>Phone2:</b>
+  <%=h @person.phone2 %>
+</p>
+
+<p>
+  <b>Skype:</b>
+  <%=h @person.skype_id %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @person.address %>
+</p>
+
+<p>
+  <b>Image :</b>
+  <%= image_tag person_url(@person, :jpg) %>
+</p>
+

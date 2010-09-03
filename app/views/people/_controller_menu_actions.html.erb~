@@ -1,0 +1,2 @@
+	<li><%= link_to "Update the trombi", :controller =>"trombi", :action=>"index"%></li>
+	<li><%= link_to "Manage users", :controller =>"trombi", :action=>"list"%></li>
