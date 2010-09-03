@@ -1,4 +1,0 @@
-@person.operate do |image|
-    image.resize '220x220'
-    image.text 'Moldavenir'
-end
