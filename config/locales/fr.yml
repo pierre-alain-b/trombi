@@ -1,0 +1,102 @@
+--- 
+fr: 
+  layout: 
+    administration: Administration
+    list: Voir la liste
+    logout: "Se d\xC3\xA9connecter"
+    manage_people: "G\xC3\xA9rer les fiches"
+    manage_users: "G\xC3\xA9rer les utilisateurs"
+    my_account: Mon compte
+    login: Se connecter
+    home: Accueil
+  views: 
+    trombi: 
+      list: 
+        title: Liste des fiches
+        more_details: "Voir plus de d\xC3\xA9tails"
+      account: 
+        change_password?: Voulez-vous changer de mot de passe ?
+        change_password: Changer de mot de passe
+        change_language?: Voulez-vous modifier la langue du Trombi ?
+        title: Modifier les options de votre compte
+        default_language: Langue favorite
+        confirm_new_password: Confirmer le nouveau mot de passe
+        new_password: Nouveau mot de passe
+        change_language: Modifier la langue
+        old_password: Ancien mot de passe
+      index: 
+        title: Soyez le/la bienvenu(e) sur le Trombinoscope
+      search: 
+        title: "R\xC3\xA9sultats de votre recherche"
+        more_details: "Voir plus de d\xC3\xA9tails"
+        message: "Voici les r\xC3\xA9sultats de votre requ\xC3\xAAte"
+    users: 
+      new: 
+        add_user: Ajouter l'utilisateur
+        title: "G\xC3\xA9rer les utilisateurs - Ajouter un nouvel utilisateur"
+        add_details: "Veuillez entrer les param\xC3\xA8tres de l'utilisateur"
+      edit: 
+        title: "G\xC3\xA9rer les utilisateurs - Modifier un utilisateur existant"
+        change_user: Enregistrer les modifications
+        change_details: "Veuillez changer les param\xC3\xA8tres de l'utilisateur"
+      index: 
+        new_user: Nouvel utilisateur
+        title: "G\xC3\xA9rer les utilisateurs"
+      show: 
+        salt: Sel pour le cryptage du mot de passe
+        title: "G\xC3\xA9rer les utilisateurs - Voir les informations d'un utilisateur existant"
+        hashed_password: "Mot de passe hash\xC3\xA9"
+    people: 
+      new: 
+        title: "G\xC3\xA9rer les fiches - Ajouter une nouvelle fiche"
+      edit: 
+        title: "G\xC3\xA9rer les fiches - Modifier une fiche"
+      show: 
+        title: "G\xC3\xA9rer les fiches - Voir une fiche"
+      index: 
+        title: "G\xC3\xA9rer les fiches"
+        new_person: Nouvelle fiche
+  g: 
+    address: Adresse
+    back: Retour
+    edit: "\xC3\x89diter"
+    image_url: Image URL
+    default_language: Langue favorite
+    are_you_sure: "\xC3\x8Ates-vous s\xC3\xBBr ?"
+    password_confirmation: Confirmation du mot de passe
+    level: Niveau
+    initials: Initiales
+    username: Nom d'utilisateur
+    destroy: "D\xC3\xA9truire"
+    phone1: "Num\xC3\xA9ro de t\xC3\xA9l\xC3\xA9phone"
+    phone2: "Num\xC3\xA9ro de t\xC3\xA9l\xC3\xA9phone secondaire"
+    other: Autres informations
+    last_name: Nom de famille
+    view: Voir
+    show: "D\xC3\xA9tails"
+    create: !binary |
+      Q3LDqWVy
+
+    user: Utilisateur
+    image: Photo
+    password: Mot de passe
+    update: "Mettre \xC3\xA0 jour"
+    skype_id: "Identifiant Skype ou \xC3\xA9quivalent"
+    first_name: "Pr\xC3\xA9nom"
+    or_url: "ou URL:"
+    email: Courriel
+    nationality: "Nationalit\xC3\xA9"
+  controller: 
+    trombi: 
+      account: 
+        wrong_old_password: Mot de passe actuel incorrect
+    people: 
+      successfully_created: "La personne a bien \xC3\xA9t\xC3\xA9 cr\xC3\xA9\xC3\xA9e"
+      successfully_updated: "La fiche de la personne a bien \xC3\xA9t\xC3\xA9 mise \xC3\xA0 jour"
+  flash: 
+    language_updated: "Langue favorite mise \xC3\xA0 jour"
+    password_updated: "Mot de passe modifi\xC3\xA9"
+    wrong_password: Correspondance utilisateur/mot de passe incorrecte
+    confirmation_not_match: "Cette confirmation ne correspond pas au mot de passe entr\xC3\xA9"
+    login-super: "Vous n'\xC3\xAAtes pas Super administrateur. Veuillez vous reconnecter en tant que Super administrateur. "
+    login: "Pour acc\xC3\xA9der au trombi, il fait d'abord s'identifier."

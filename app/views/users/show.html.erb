@@ -1,0 +1,31 @@
+<h1><%= I18n.t('views.users.show.title') %></h1>
+
+<div id="commands">
+<%= link_to I18n.t('g.edit'), edit_user_path(@user) %> |
+<%= link_to I18n.t('g.back'), users_path %>
+</div>
+
+<p>
+  <b><%= I18n.t('g.username') %>:</b>
+  <%=h @user.name %>
+</p>
+
+<p>
+  <b><%= I18n.t('views.users.show.hashed_password') %>:</b>
+  <%=h @user.hashed_password %>
+</p>
+
+<p>
+  <b><%= I18n.t('views.users.show.salt') %>:</b>
+  <%=h @user.salt %>
+</p>
+
+<p>
+  <b><%= I18n.t('g.level') %>:</b>
+  <%=h @user.level %>
+</p>
+
+<p>
+  <b><%= I18n.t('g.default_language') %>:</b>
+  <%=h @user.default_language %>
+</p>

@@ -1,0 +1,3 @@
+@person.operate do |image|
+    image.resize '277x200'
+end

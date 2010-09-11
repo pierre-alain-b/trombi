@@ -1,0 +1,9 @@
+<h2><%= I18n.t('views.trombi.search.title') %></h2>
+
+<div id="person-list">
+
+<%= I18n.t('views.trombi.search.message') %> "<%= @query %>"
+
+<%= render(:partial => "person_table", :object => @people) %>
+
+</div>

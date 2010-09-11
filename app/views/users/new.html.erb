@@ -1,0 +1,39 @@
+<h1><%= I18n.t('views.users.new.title') %></h1>
+
+<div id="commands">
+<%= link_to I18n.t('g.back'), users_path %>
+</div>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <fieldset>
+  <legend><%= I18n.t('views.users.new.add_details') %></legend>
+  
+  <p>
+  <%= f.label I18n.t('g.username') %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.password') %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.password_confirmation') %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.level') %><br />
+    <%= f.text_field :level, :value=>"0" %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.default_language') %><br />
+    <%= f.text_field :default_language, :value=>"en" %>
+  </p>
+  <p>
+    <%= f.submit I18n.t('views.users.new.add_user') %>
+  </p>
+  
+  </fieldset>
+<% end %>
+

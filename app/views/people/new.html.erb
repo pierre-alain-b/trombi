@@ -1,0 +1,58 @@
+<h1><%= I18n.t('views.people.new.title') %></h1>
+
+<div id="commands">
+<%= link_to I18n.t('g.back'), people_path %>
+</div>
+
+<% form_for @person, :html => { :multipart => true }  do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label I18n.t('g.first_name') %><br />
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.last_name') %><br />
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.initials') %><br />
+    <%= f.text_field :initials %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.email') %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.phone1') %><br />
+    <%= f.text_field :phone1 %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.phone2') %><br />
+    <%= f.text_field :phone2 %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.skype_id') %><br />
+    <%= f.text_field :skype_id %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.nationality') %><br />
+    <%= f.text_field :nationality %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.address') %><br />
+    <%= f.text_area :address, :size => "25x5" %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.other') %><br />
+    <%= f.text_area :other, :size => "25x8" %>
+  </p>
+  <p>
+    <%= f.label I18n.t('g.image_url') %><br />
+    <%= f.file_field :image_file %><br /> <%= I18n.t('g.or_url') %> <%= f.text_field :image_file_url %>
+  </p>
+  <p>
+    <%= f.submit I18n.t('g.create') %>
+  </p>
+<% end %>
+

@@ -1,0 +1,6 @@
+<li class="nav_tab_container"><%= link_to I18n.t('layout.home'), {:controller =>"trombi", :action=>"index"}, :class=>"nav_tab active" %></li>
+<%if session[:user_id]!=nil %>
+<% if User.find_by_id(session[:user_id]).level>0 %>
+<li class="nav_tab_container"><%= link_to I18n.t('layout.administration'), :controller=>"people", :action =>"index" %></li>
+<% end %>
+<% end %>

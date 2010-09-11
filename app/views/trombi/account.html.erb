@@ -1,0 +1,49 @@
+<h2><%= I18n.t('views.trombi.account.title')%> ( <%= I18n.t('g.user') %> <%= @user.name %>)</h2>
+
+<% form_tag do %>
+
+  <fieldset>
+  <legend><%= I18n.t('views.trombi.account.change_language?') %></legend>
+  
+  <p>
+    <label for="default_language"><%= I18n.t('views.trombi.account.default_language') %></label>
+    <%= select_tag :default_language, options_for_select(LANGUAGES, @user.default_language) %>
+  </p>
+
+  <p>
+    <%= submit_tag I18n.t('views.trombi.account.change_language') %>
+  </p>
+  
+  </fieldset>
+  
+<% end %>
+
+
+<br />
+<br />
+
+
+<% form_tag do %>
+
+  <fieldset>
+  <legend><%= I18n.t('views.trombi.account.change_password?') %></legend>
+  
+  <p>
+  <label for="old_password"><%= I18n.t('views.trombi.account.old_password') %></label>
+    <%= password_field_tag :old_password, params[:old_password] %>
+  </p>
+  <p>
+    <label for="password"><%= I18n.t('views.trombi.account.new_password') %></label>
+    <%= password_field_tag :password, params[:password] %>
+  </p>
+  <p>
+    <label for="password_confirmation"><%= I18n.t('views.trombi.account.confirm_new_password') %></label>
+    <%= password_field_tag :password_confirmation, params[:password_confirmation] %>
+  </p>
+  <p>
+    <%= submit_tag I18n.t('views.trombi.account.change_password') %>
+  </p>
+  
+  </fieldset>
+  
+<% end %>

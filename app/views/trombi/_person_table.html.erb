@@ -1,0 +1,24 @@
+<table>
+  <tr class="list-line-header">
+    <th><%= I18n.t('g.image') %></th>
+    <th><%= I18n.t('g.first_name') %></th>
+    <th><%= I18n.t('g.last_name') %></th>
+    <th><%= I18n.t('g.email') %></th>
+    <th><%= I18n.t('g.phone1') %></th>
+    <th></th>
+  </tr>
+
+<% @people.each do |person| %>
+  <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td><%= image_tag person_path(person, :jpg), :style => "height:100px;" %></td>
+    <td><%=h person.first_name %></td>
+    <td><%=h person.last_name %></td>
+    <td><%= auto_link_email_addresses person.email %></td>
+    <td><%=h person.phone1 %></td>
+    <td class="list-actions">
+    <%= link_to I18n.t('views.trombi.list.more_details'), :action => "show_details", :id => person %>
+    </td>
+  </tr>
+<% end %>
+
+</table>
