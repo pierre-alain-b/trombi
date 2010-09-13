@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
-	acts_as_fleximage :image_directory => 'public/images/uploaded_photos'
+	acts_as_fleximage do
+		image_directory 'public/images/uploaded_photos'
+	end
 	
 	validates_presence_of :first_name, :last_name, :email
 	
@@ -9,9 +11,9 @@ class Person < ActiveRecord::Base
 	
 	def self.search(search)
            if search
-           	   find(:all, :conditions => ["first_name LIKE ? or last_name LIKE ? or email LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%"], :order => 'last_name DESC')
+           	   find(:all, :conditions => ["first_name LIKE ? or last_name LIKE ? or email LIKE ? or other LIKE ? or initials LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"], :order => 'LOWER(last_name) ASC')
            else
-           	   find(:all, :order => 'last_name DESC')
+           	   find(:all, :order => 'LOWER(last_name) ASC')
            end
        end
 end

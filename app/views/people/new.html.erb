@@ -8,11 +8,11 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label I18n.t('g.first_name') %><br />
+    <%= f.label I18n.t('g.first_name') %> <span style="color:red;">*</span><br />
     <%= f.text_field :first_name %>
   </p>
   <p>
-    <%= f.label I18n.t('g.last_name') %><br />
+    <%= f.label I18n.t('g.last_name') %> <span style="color:red;">*</span><br />
     <%= f.text_field :last_name %>
   </p>
   <p>
@@ -20,7 +20,7 @@
     <%= f.text_field :initials %>
   </p>
   <p>
-    <%= f.label I18n.t('g.email') %><br />
+    <%= f.label I18n.t('g.email') %> <span style="color:red;">*</span><br />
     <%= f.text_field :email %>
   </p>
   <p>

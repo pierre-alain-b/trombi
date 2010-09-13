@@ -29,6 +29,7 @@
 *.sqlite
 *.sqlite3
 config/database.yml
+config/site.yml
 
 # OS generated files #
 ######################

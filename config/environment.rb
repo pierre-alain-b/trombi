@@ -6,6 +6,10 @@
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+require 'yaml'
+SITE_CONFIG = YAML.load_file(File.join(File.dirname(__FILE__), 'site.yml'))
+HOST_ROOT = SITE_CONFIG['host_root']
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers

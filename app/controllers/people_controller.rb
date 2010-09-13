@@ -45,6 +45,11 @@ class PeopleController < ApplicationController
   # POST /people.xml
   def create
     @person = Person.new(params[:person])
+   
+      	 if params[:image_file].nil? and params[:image_file_url].nil?
+  	  	  @person.image_file_url="#{HOST_ROOT}/images/default-picture.gif"
+  	  	  puts @person.image_file_url
+  	 end
 
     respond_to do |format|
       if @person.save

@@ -1,0 +1,2 @@
+#Path to the root of the server - useful for accessing /images/default-picture.gif
+host_root: "http://localhost:3000"

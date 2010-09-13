@@ -44,12 +44,12 @@
 
 <p>
   <b><%= I18n.t('g.address') %>:</b>
-  <%=h @person.address %>
+  <%= simple_format(@person.address) %>
 </p>
 
 <p>
   <b><%= I18n.t('g.other') %>:</b>
-  <%=h @person.other %>
+  <%= simple_format(@person.other) %>
 </p>
 
 </div>

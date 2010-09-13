@@ -5,7 +5,7 @@ class TrombiController < ApplicationController
 	end
 	
 	def list
-		@people = Person.find(:all)
+		@people = Person.find(:all, :order=>"LOWER(last_name) ASC")
 	end
 	
 	def show_details
