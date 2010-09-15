@@ -1,7 +1,8 @@
 class TrombiController < ApplicationController
 	
 	def index
-		@people = Person.find(:all)	
+		@last_three = Person.find(:all, :limit => 3, :order => "id DESC")
+		@lottery_winner = Person.find(:first, :offset => ( Person.count * rand ).to_i )
 	end
 	
 	def list

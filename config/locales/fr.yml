@@ -1,5 +1,24 @@
 --- 
 fr: 
+  number: 
+    format: 
+      precision: 3
+    human: 
+      storage_units: 
+        units: 
+          kb: Ko
+          tb: To
+          gb: Go
+          byte: 
+            one: Byte
+            other: Bytes
+          mb: Mo
+    currency: 
+      format: 
+        unit: !binary |
+          4oKs
+
+        precision: 2
   layout: 
     administration: Administration
     list: Voir la liste
@@ -9,6 +28,38 @@ fr:
     my_account: Mon compte
     login: Se connecter
     home: Accueil
+  activerecord: 
+    errors: 
+      messages: 
+        record_invalid: "La validation a \xC3\xA9chou\xC3\xA9 : {{errors}}"
+        greater_than_or_equal_to: "doit \xC3\xAAtre sup\xC3\xA9rieur ou \xC3\xA9gal \xC3\xA0 {{count}}"
+        confirmation: "ne correspond pas \xC3\xA0 la confirmation"
+        less_than_or_equal_to: "doit \xC3\xAAtre inf\xC3\xA9rieur ou \xC3\xA9gal \xC3\xA0 {{count}}"
+        blank: "ne peut pas \xC3\xAAtre blanc"
+        exclusion: !binary |
+          ZXN0IHLDqXNlcnbDqQ==
+
+        invalid: est invalide
+        odd: "doit \xC3\xAAtre impair"
+        wrong_length: "n'est pas de la bonne longueur (doit comporter {{count}} caract\xC3\xA8res)"
+        even: "doit \xC3\xAAtre pair"
+        empty: "ne peut pas \xC3\xAAtre vide"
+        too_short: "est trop court (minimum {{count}} caract\xC3\xA8res)"
+        less_than: "doit \xC3\xAAtre inf\xC3\xA9rieur \xC3\xA0 {{count}}"
+        greater_than: "doit \xC3\xAAtre sup\xC3\xA9rieur {{count}}"
+        equal_to: "doit \xC3\xAAtre \xC3\xA9gal \xC3\xA0 {{count}}"
+        too_long: "est trop long (maximum {{count}} caract\xC3\xA8res)"
+        accepted: "doit \xC3\xAAtre accept\xC3\xA9"
+        taken: !binary |
+          YSBkw6lqw6Agw6l0w6kgcHJpcw==
+
+        not_a_number: n'est pas un nombre
+        inclusion: n'est pas inclus dans la liste
+      template: 
+        body: "Il y a des probl\xC3\xA8mes avec les champs suivants :"
+  time: 
+    am: matin
+    pm: "apr\xC3\xA8s-midi"
   views: 
     trombi: 
       list: 
@@ -26,6 +77,8 @@ fr:
         old_password: Ancien mot de passe
       index: 
         title: Soyez le/la bienvenu(e) sur le Trombinoscope
+        last-people: "Derni\xC3\xA8res personnes ajout\xC3\xA9es"
+        lottery: Une personne au hasard !
       search: 
         title: "R\xC3\xA9sultats de votre recherche"
         more_details: "Voir plus de d\xC3\xA9tails"
@@ -56,6 +109,13 @@ fr:
       index: 
         title: "G\xC3\xA9rer les fiches"
         new_person: Nouvelle fiche
+  support: 
+    array: 
+      words_connector: ","
+      last_word_connector: ", et"
+      two_words_connector: et
+    select: 
+      prompt: "Veuillez s\xC3\xA9lectionner"
   g: 
     address: Adresse
     back: Retour
@@ -100,3 +160,13 @@ fr:
     confirmation_not_match: "Cette confirmation ne correspond pas au mot de passe entr\xC3\xA9"
     login-super: "Vous n'\xC3\xAAtes pas Super administrateur. Veuillez vous reconnecter en tant que Super administrateur. "
     login: "Pour acc\xC3\xA9der au trombi, il fait d'abord s'identifier."
+  datetime: 
+    prompts: 
+      minute: Minute
+      month: Mois
+      second: Secondes
+      hour: Heure
+      day: Jour
+      year: !binary |
+        QW5uw6ll
+

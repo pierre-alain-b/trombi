@@ -66,8 +66,10 @@ en:
         confirm_new_password: "Confirm new password"
       index:
         title: "Welcome on the Trombinoscope application"
+        last-people: "Last added people"
+        lottery: "One random person !"
       list:
-        title: "Listing on people"
+        title: "Listing of people"
         more_details: "Show more details"
       search:
         title: "Results of your search"

@@ -55,13 +55,12 @@ div.wrapper {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px; }
 
-
 div.content_wrap {
   float: left;
-  width: 640px;
+  width: 900px;
   padding: 10px;
-    padding-right: 0px; }
-
+  padding-right: 0px;
+}
 
 div.container {
   width: 960px;
@@ -181,7 +180,24 @@ div.project_navigation {
     	font: bold smaller;
 }
 
-    
+#commands {
+	width:900px;
+}
+
+#lottery {
+	float:right;
+	width:200px;
+	text-align:center;
+}
+
+#lottery .img {
+	
+}
+
+#last-three {
+	float:left;
+	width:700px;
+}
 
 #footer {
   clear: both;
@@ -248,16 +264,20 @@ div.loginform form {
   
 /* For tables */
 
-#person-list .list-line-header {
+.person-list {
+	text-align:center;	
+}
+
+.person-list .list-line-header {
 	color:white;
 	background-color:#5599FF;	
 }
 
-#person-list .list-line-odd {
+.person-list .list-line-odd {
 	background-color:#d5e5ff;	
 }
 
-#person-list .list-line-even {
+.person-list .list-line-even {
 	background-color:white;	
 }
 
