@@ -1,6 +1,6 @@
 == Welcome on the Trombi
 
-The Trombi is a very simpe application to have a list of people with mugshots.
+The Trombi is a very simple web-based application to manage 
 
 == Getting Started
 
@@ -10,3 +10,7 @@ The Trombi is a very simpe application to have a list of people with mugshots.
 4. Launch 'rake db:seed' to add the first user (admin:password)
 5. Lauch the application and connect to the Trombi with the admin user
 6. Immediately change the password of the admin user !
+
+
+== Why Trombi ?
+Trombi is the beginning for the French word 'trombinoscope'. In French, a 'trombinoscope' is a document with a list of people (e.g. pupils) with their photographic portrait. A 'trombinoscope' is very useful to link a name and a face - especially in associations, classrooms when you meet many people...

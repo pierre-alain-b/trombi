@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: TrombiController</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">TrombiController</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/controllers/trombi_controller_rb.html">
+                app/controllers/trombi_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="ApplicationController.html">
+                ApplicationController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <pre>
+ Main controller of the Trombi application.
+</pre>
+<p>
+ This controller is accessible by any authentified user and gives access
+to the <a href="TrombiController.html#M000016">list</a> of people
+registered within the Trombinoscope
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000019">account</a>&nbsp;&nbsp;
+      <a href="#M000015">index</a>&nbsp;&nbsp;
+      <a href="#M000016">list</a>&nbsp;&nbsp;
+      <a href="#M000020">login</a>&nbsp;&nbsp;
+      <a href="#M000021">logout</a>&nbsp;&nbsp;
+      <a href="#M000018">search</a>&nbsp;&nbsp;
+      <a href="#M000017">show_details</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="#M000019" class="method-signature">
+          <span class="method-name">account</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Management of the <a href="TrombiController.html#M000019">account</a> of
+the user The user can change its password and its default language
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000019-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/trombi_controller.rb, line 31</span>
+31:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">account</span>
+32:                 <span class="ruby-ivar">@user</span>=<span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_id</span>])
+33:                 
+34:                 <span class="ruby-comment cmt">#Only goes further if there is a request to process</span>
+35:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">post?</span>
+36:                         
+37:                         <span class="ruby-comment cmt">#If the request concerns the default language */</span>
+38:                         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:commit</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span>(<span class="ruby-value str">'views.trombi.account.change_language'</span>)
+39:                                 <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">default_language</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:default_language</span>]
+40:                                 <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">save</span>
+41:                                 <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_default_language</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:default_language</span>]
+42:                                 <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;trombi&quot;</span>, <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;account&quot;</span>)
+43:                                 <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span> <span class="ruby-value str">'flash.language_updated'</span>, <span class="ruby-identifier">:locale</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:default_language</span>]
+44:                                         
+45:                         <span class="ruby-comment cmt">#If the request concerns the password */     </span>
+46:                         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:commit</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span>(<span class="ruby-value str">'views.trombi.account.change_password'</span>)
+47:                         
+48:                                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:password</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:password_confirmation</span>]
+49:                                         <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span>(<span class="ruby-value str">'flash.confirmation_not_match'</span>)
+50:                                 <span class="ruby-keyword kw">else</span>
+51:                                         <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">authenticate_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_id</span>], <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:old_password</span>])
+52:                                         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span>
+53:                                                 <span class="ruby-identifier">user</span>.<span class="ruby-identifier">password</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:password</span>]
+54:                                                 <span class="ruby-identifier">user</span>.<span class="ruby-identifier">save</span>
+55:                                                 <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;trombi&quot;</span>, <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;index&quot;</span>)
+56:                                                 <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span>(<span class="ruby-value str">'flash.password_updated'</span>)
+57:                                         <span class="ruby-keyword kw">else</span>
+58:                                                 <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span>(<span class="ruby-value str">'controller.trombi.account.wrong_old_password'</span>)
+59:                                         <span class="ruby-keyword kw">end</span>
+60:         
+61:                                 <span class="ruby-keyword kw">end</span>
+62:                         <span class="ruby-keyword kw">end</span>
+63:                 <span class="ruby-keyword kw">end</span>
+64:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="#M000015" class="method-signature">
+          <span class="method-name">index</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Index page - displayed after <a
+href="TrombiController.html#M000020">login</a> for all users
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000015-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/trombi_controller.rb, line 6</span>
+ 6:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
+ 7:                 <span class="ruby-comment cmt"># Retrieve the last three people added</span>
+ 8:                 <span class="ruby-ivar">@last_three</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>, <span class="ruby-identifier">:limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;id DESC&quot;</span>)
+ 9:                 <span class="ruby-comment cmt"># Retrieve an aleatory page - pretty cool to memorize names and pictures !</span>
+10:                 <span class="ruby-ivar">@lottery_winner</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:offset</span> =<span class="ruby-operator">&gt;</span> ( <span class="ruby-constant">Person</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">rand</span> ).<span class="ruby-identifier">to_i</span> )
+11:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="#M000016" class="method-signature">
+          <span class="method-name">list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Displays a <a href="TrombiController.html#M000016">list</a> of all people
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000016-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/trombi_controller.rb, line 14</span>
+14:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list</span>
+15:                 <span class="ruby-ivar">@people</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>, <span class="ruby-identifier">:order=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;LOWER(last_name) ASC&quot;</span>)
+16:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="#M000020" class="method-signature">
+          <span class="method-name">login</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Manages the authentification process with the <a
+href="TrombiController.html#M000020">login</a> page
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000020-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/trombi_controller.rb, line 67</span>
+67:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">login</span>
+68:                 <span class="ruby-comment cmt"># If the person is redirected to the login page, then previous session informations are erased</span>
+69:                 <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_id</span>]=<span class="ruby-keyword kw">nil</span>
+70:                 <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_level</span>]=<span class="ruby-keyword kw">nil</span>
+71:                 <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[<span class="ruby-identifier">:notice</span>]=<span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span>(<span class="ruby-value str">'flash.login'</span>)
+72:         
+73:                   <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">post?</span>
+74:                           <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:name</span>], <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:password</span>])
+75:                           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span>
+76:                                   <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_id</span>]=<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+77:                                   <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_level</span>]=<span class="ruby-identifier">user</span>.<span class="ruby-identifier">level</span>
+78:                                   <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_default_language</span>]=<span class="ruby-identifier">user</span>.<span class="ruby-identifier">default_language</span>
+79:                                   <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;trombi&quot;</span>, <span class="ruby-identifier">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;index&quot;</span>)
+80:                           <span class="ruby-keyword kw">else</span>
+81:                                   <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">now</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span>(<span class="ruby-value str">'flash.wrong_password'</span>)
+82:                           <span class="ruby-keyword kw">end</span>
+83:                   <span class="ruby-keyword kw">end</span>
+84:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="#M000021" class="method-signature">
+          <span class="method-name">logout</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Manages the <a href="TrombiController.html#M000021">logout</a> process
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000021-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/trombi_controller.rb, line 87</span>
+87:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logout</span>
+88:                 <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_id</span>]=<span class="ruby-keyword kw">nil</span>
+89:                 <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_level</span>]=<span class="ruby-keyword kw">nil</span>
+90:                 <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;index&quot;</span>)
+91:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="#M000018" class="method-signature">
+          <span class="method-name">search</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Executes a <a href="TrombiController.html#M000018">search</a> query on the
+database (cf. model file for the definition of <a
+href="Person.html#M000001">Person.search</a>)
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000018-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/trombi_controller.rb, line 24</span>
+24:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search</span>
+25:                 <span class="ruby-ivar">@query</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:search</span>]
+26:                 <span class="ruby-ivar">@people</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">search</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:search</span>])
+27:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="#M000017" class="method-signature">
+          <span class="method-name">show_details</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+ Displays a detailed page with details for the chosen person
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000017-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/trombi_controller.rb, line 19</span>
+19:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show_details</span>
+20:                 <span class="ruby-ivar">@person</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+21:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,23 +1,33 @@
+# Main controller of the Trombi application.
+# This controller is accessible by any authentified user and gives access to the list of people registered within the Trombinoscope
 class TrombiController < ApplicationController
 	
+	# Index page - displayed after login for all users
 	def index
+		# Retrieve the last three people added
 		@last_three = Person.find(:all, :limit => 3, :order => "id DESC")
+		# Retrieve an aleatory page - pretty cool to memorize names and pictures !
 		@lottery_winner = Person.find(:first, :offset => ( Person.count * rand ).to_i )
 	end
 	
+	# Displays a list of all people
 	def list
 		@people = Person.find(:all, :order=>"LOWER(last_name) ASC")
 	end
 	
+	# Displays a detailed page with details for the chosen person
 	def show_details
 		@person = Person.find(params[:id])
 	end
 	
+	# Executes a search query on the database (cf. model file for the definition of Person.search)
 	def search
 		@query = params[:search]
 		@people = Person.search(params[:search])
 	end
 	
+	# Management of the account of the user
+	# The user can change its password and its default language
 	def account
 		@user=User.find_by_id(session[:user_id])
 		
@@ -53,7 +63,9 @@ class TrombiController < ApplicationController
 		end
 	end
 	
+	# Manages the authentification process with the login page
 	def login
+		# If the person is redirected to the login page, then previous session informations are erased
 		session[:user_id]=nil
 		session[:user_level]=nil
 		flash.now[:notice]=I18n.t('flash.login')
@@ -71,7 +83,7 @@ class TrombiController < ApplicationController
 		  end
 	end
 
-	
+	# Manages the logout process
 	def logout
 		session[:user_id]=nil
 		session[:user_level]=nil

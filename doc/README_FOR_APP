@@ -1,2 +1,4 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+The Trombi application is designed to manage simple and efficient list of members (with ID details and pictures) for associations, clubs...
+
+It was coded by Pierre-Alain Bandinelli.
+Released under a GNU/GPL (which version? that's a pretty good question! let's say GPL v3) license.

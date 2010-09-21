@@ -1,9 +1,10 @@
+# The People controller is used for the administration of the pages of the Trombi
+# This controller is only accessible to user with level > 0
 class PeopleController < ApplicationController
 	layout "trombi"
 	caches_page :show
 	
-  # GET /people
-  # GET /people.xml
+  # Display the index with the list of the pages of the Trombi
   def index
     @people = Person.all
 
@@ -13,8 +14,7 @@ class PeopleController < ApplicationController
     end
   end
 
-  # GET /people/1
-  # GET /people/1.xml
+  # Display a specified page with details
   def show
     @person = Person.find(params[:id])
 
@@ -25,8 +25,7 @@ class PeopleController < ApplicationController
     end
   end
 
-  # GET /people/new
-  # GET /people/new.xml
+  # Add a new page (person) to the Trombi
   def new
     @person = Person.new
 
@@ -36,16 +35,15 @@ class PeopleController < ApplicationController
     end
   end
 
-  # GET /people/1/edit
+  # Edit an existing page for a person
   def edit
     @person = Person.find(params[:id])
   end
 
-  # POST /people
-  # POST /people.xml
+  # Create a new page
   def create
     @person = Person.new(params[:person])
-   
+    # If no image is chosen, a default file is used.
       	 if params[:image_file].nil? and params[:image_file_url].nil?
   	  	  @person.image_file_url="#{HOST_ROOT}/images/default-picture.gif"
   	  	  puts @person.image_file_url
@@ -62,8 +60,7 @@ class PeopleController < ApplicationController
     end
   end
 
-  # PUT /people/1
-  # PUT /people/1.xml
+  # Update an existing page
   def update
     @person = Person.find(params[:id])
     expire_person(@person)
@@ -79,8 +76,7 @@ class PeopleController < ApplicationController
     end
   end
 
-  # DELETE /people/1
-  # DELETE /people/1.xml
+  # Delete an existing page
   def destroy
     @person = Person.find(params[:id])
     expire_person(@person)
@@ -94,22 +90,26 @@ class PeopleController < ApplicationController
   
   
 private
-def expire_person(person)
-	expire_page :controller => "people", :action => "show"
-	expire_page person_path(person, :jpg)
-end
+	# Manage the expiration of cached pages and pictures for deleted/updated pages of the  Trombi
+	def expire_person(person)
+		expire_page :controller => "people", :action => "show"
+		expire_page person_path(person, :jpg)
+	end
 
 protected
-    def authorize
-    	    if user=User.find_by_id(session[:user_id])
-    	    	    unless user.level>0
-    	    	    	    flash[:notice] = I18n.t('flash.login-super')
-    	    	    	    redirect_to :controller => "trombi", :action => "login"
-    	    	    end
-    	  else
-    	    	  flash[:notice] = "Please log in"
-  	  	  redirect_to :controller => "trombi", :action => "login"
-  	  end
-end
+	# Authorization function specitif to the People (aka administration) controller.
+	# It overrides the general authorization function.
+	# Makes sure that only administrator users (level > 0) access the panel.
+	def authorize
+		 if user=User.find_by_id(session[:user_id])
+			    unless user.level>0
+				    flash[:notice] = I18n.t('flash.login-super')
+				    redirect_to :controller => "trombi", :action => "login"
+			    end
+		 else
+			  flash[:notice] = "Please log in"
+			  redirect_to :controller => "trombi", :action => "login"
+		 end
+	end
   
 end

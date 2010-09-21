@@ -1,8 +1,8 @@
+# This controller is only used by super-administrators (users with level >= 2) to manage users
 class UsersController < ApplicationController
   layout "trombi"
 	
-  # GET /users
-  # GET /users.xml
+  # Displays a list of authorized users
   def index
     @users = User.find(:all, :order=>:name)
 
@@ -12,8 +12,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1
-  # GET /users/1.xml
+  # Show some details on a specific user
   def show
     @user = User.find(params[:id])
 
@@ -23,8 +22,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/new
-  # GET /users/new.xml
+  # Creates a new user
   def new
     @user = User.new
 
@@ -34,13 +32,12 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
+  # Edits an existing users
   def edit
     @user = User.find(params[:id])
   end
 
-  # POST /users
-  # POST /users.xml
+  # Creates a new user
   def create
     @user = User.new(params[:user])
 
@@ -56,8 +53,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # PUT /users/1
-  # PUT /users/1.xml
+
+  # Updates an existing user
   def update
     @user = User.find(params[:id])
 
@@ -73,8 +70,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.xml
+  # Destroys an existing user
   def destroy
     @user = User.find(params[:id])
     begin
@@ -91,6 +87,8 @@ class UsersController < ApplicationController
   end
   
   protected
+  # Specific authorization function that overrides the default for application
+  # Makes sure that only super-administrators (users with level >=2) access this administration panel
     def authorize
     	    if user=User.find_by_id(session[:user_id])
     	    	    unless user.level>1
