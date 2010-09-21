@@ -1,6 +1,6 @@
 == Welcome on the Trombi
 
-The Trombi is a very simple web-based application to manage 
+The Trombi is a very simple web-based application to manage lists of clubs, associations, ... members. An entry in the Trombi includes some basic ID information (name, email address, physical address, IM login...) and a picture.
 
 == Getting Started
 
@@ -13,4 +13,9 @@ The Trombi is a very simple web-based application to manage
 
 
 == Why Trombi ?
-Trombi is the beginning for the French word 'trombinoscope'. In French, a 'trombinoscope' is a document with a list of people (e.g. pupils) with their photographic portrait. A 'trombinoscope' is very useful to link a name and a face - especially in associations, classrooms when you meet many people...
+Trombi is the beginning for the French word 'trombinoscope'. In French, a 'trombinoscope' is a document with a list of people (e.g. pupils) with their photographic portrait. A 'trombinoscope' is very useful to link a name with a face - especially in associations, classrooms when you meet many people...
+
+
+== License
+The Trombi application is released as is under the GNU/GPL v3 license.
+It was developed by Pierre-Alain Bandinelli to manage lists of club members, association members...
