@@ -77,7 +77,7 @@ class UsersController < ApplicationController
     	    @user.destroy
     	    flash[:notice] = "User #{@user.name} deleted" 	    
     rescue Exception => e
-    	    flash[:notice] = e.message
+    	    flash[:error] = e.message
     end
     
     respond_to do |format|
@@ -92,7 +92,7 @@ class UsersController < ApplicationController
     def authorize
     	    if user=User.find_by_id(session[:user_id])
     	    	    unless user.level>1
-    	    	    	    flash[:notice] = I18n.t('flash.login-super')
+    	    	    	    flash[:warning] = I18n.t('flash.login-super')
     	    	    	    redirect_to :controller => "trombi", :action => "login"
     	    	    end
     	  else

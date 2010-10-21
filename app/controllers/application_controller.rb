@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   	 
   	  rescue Exception => err
 		  logger.error err
-		  flash.now[:notice]= "#{I18n.locale} translation is not available. La traduction #{I18n.locale} n'est pas disponible."
+		  flash.now[:error]= "#{I18n.locale} translation is not available. La traduction #{I18n.locale} n'est pas disponible."
 		  I18n.load_path -= [locale_path]
 		  I18n.locale = session[:user_default_language] = I18n.default_locale
   end

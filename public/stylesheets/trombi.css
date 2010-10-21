@@ -173,10 +173,26 @@ div.project_navigation {
 
     
 #notice {
+    	border: 2px dashed green;
+    	padding: 1em;
+    	margin-bottom: 2em;
+    	background-color: #aaff77 ;
+    	font: bold smaller;
+}
+
+#error {
     	border: 2px dashed red;
     	padding: 1em;
     	margin-bottom: 2em;
     	background-color: #ff9999 ;
+    	font: bold smaller;
+}
+
+#warning {
+    	border: 2px dashed orange;
+    	padding: 1em;
+    	margin-bottom: 2em;
+    	background-color: #ffdd77 ;
     	font: bold smaller;
 }
 

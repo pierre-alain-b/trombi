@@ -7,42 +7,42 @@
 
 <p>
   <b><%= I18n.t('g.first_name') %>:</b>
-  <%=h @person.first_name %>
+  <%= @person.first_name %>
 </p>
 
 <p>
   <b><%= I18n.t('g.last_name') %>:</b>
-  <%=h @person.last_name %>
+  <%= @person.last_name %>
 </p>
 
 <p>
   <b><%= I18n.t('g.initials') %>:</b>
-  <%=h @person.initials %>
+  <%= @person.initials %>
 </p>
 
 <p>
   <b><%= I18n.t('g.email') %>:</b>
-  <%=h @person.email %>
+  <%= @person.email %>
 </p>
 
 <p>
   <b><%= I18n.t('g.phone1') %>:</b>
-  <%=h @person.phone1 %>
+  <%= @person.phone1 %>
 </p>
 
 <p>
   <b><%= I18n.t('g.phone2') %>:</b>
-  <%=h @person.phone2 %>
+  <%= @person.phone2 %>
 </p>
 
 <p>
   <b><%= I18n.t('g.skype_id') %>:</b>
-  <%=h @person.skype_id %>
+  <%= @person.skype_id %>
 </p>
 
 <p>
   <b><%= I18n.t('g.nationality') %>:</b>
-  <%=h @person.nationality %>
+  <%= @person.nationality %>
 </p>
 
 <p>
@@ -57,6 +57,6 @@
 
 <p>
   <b><%= I18n.t('g.image') %>:</b>
-  <%= image_tag person_url(@person, :jpg) %>
+  <%= image_tag @person.avatar.url %>
 </p>
 

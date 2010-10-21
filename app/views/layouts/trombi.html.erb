@@ -5,6 +5,8 @@
 	<link href='/images/favicon.ico' rel='shortcut icon' />  
 	<title>Trombinoscope</title> 
 	<%= stylesheet_link_tag "trombi", :media => "all" %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
 </head> 
 <body> 
 
@@ -33,7 +35,7 @@
 
 <ul>
 <!-- Partial to render the toggle buttons at the top of the blue ribbon -->
-<%= render(:partial => "controller_menu") %>
+<%= render( "controller_menu" ) %>
 </ul>
 
 </div>
@@ -46,11 +48,11 @@
 	<ul>
 	
 	<!-- Partial to render the actions links within the blue ribbon -->
-	<%= render(:partial => "controller_menu_actions") %>
+	<%= render( "controller_menu_actions" ) %>
 	
 	<li class="right_side">
 
-			<% form_tag "/trombi/search", :method => 'get' do %>
+			<%= form_tag "/trombi/search", :method => 'get' do %>
 			  <%= text_field_tag :search, params[:search], :id => "search-text", :size => "15" %>
 			    <%= submit_tag "Search", :name => nil, :id => "search-submit", :value => "GO" %>
 			<% end %>
@@ -61,11 +63,15 @@
 </div> 
 
 <div class='content_wrap'> 
-<div class='content' id='content'>
-
-<% if flash[:notice] %>
-	<div id="notice"><%= flash[:notice] %></div>
-<% end %>
+  <div class='content' id='content'>
+    
+      <%- flash.each do |key, msg| -%>
+	      <div id="<%= key %>">
+          <span style="float:right;"><%= link_to_function 'X', "Effect.Fade('#{key}')" %></span>
+          <%= msg %>
+		      <div class="clear"></div>
+	      </div>
+      <%- end -%>
 		
 		<%= yield :layout %>
 

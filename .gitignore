@@ -30,6 +30,7 @@
 *.sqlite3
 config/database.yml
 config/site.yml
+.bundle
 
 # OS generated files #
 ######################
@@ -41,6 +42,6 @@ Thumbs.db
 # Working folder #
 ##################
 TRAVAIL
-public/images/uploaded_photos
-public/people
-
+.redcar
+tmp/**/*
+public/system

@@ -6,7 +6,7 @@
 
 <div id="lottery">
 	<h4><%= I18n.t('views.trombi.index.lottery') %></h4>
-	<%= image_tag person_path(@lottery_winner, :jpg) %><br />
+	<%= image_tag @lottery_winner.avatar.url %><br />
 	<%= @lottery_winner.first_name + " " + @lottery_winner.last_name %> 
 </div>
 
@@ -18,9 +18,9 @@
 	<table>
 	<% @last_three.each do |person| %>
 	  <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
-	    <td><%= image_tag person_path(person, :jpg), :style => "height:80px;" %></td>
-	    <td><%=h person.first_name %></td>
-	    <td><%=h person.last_name %></td>
+	    <td><%= image_tag person.avatar.url, :style => "height:80px;" %></td>
+	    <td><%= person.first_name %></td>
+	    <td><%= person.last_name %></td>
 	    <td class="list-actions"><%= link_to I18n.t('views.trombi.list.more_details'), :action => "show_details", :id => person %></td>
 	  </tr>
 	<% end %>

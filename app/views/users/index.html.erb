@@ -15,8 +15,8 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%=h user.name %></td>
-    <td><%=h user.level %></td>
+    <td><%= user.name %></td>
+    <td><%= user.level %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => I18n.t('g.are_you_sure') , :method => :delete %></td>

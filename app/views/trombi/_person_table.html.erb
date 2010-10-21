@@ -10,11 +10,11 @@
 
 <% @people.each do |person| %>
   <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
-    <td><%= image_tag person_path(person, :jpg), :style => "height:100px;" %></td>
-    <td><%=h person.first_name %></td>
-    <td><%=h person.last_name %></td>
-    <td><%= auto_link_email_addresses person.email %></td>
-    <td><%=h person.phone1 %></td>
+    <td><%= image_tag person.avatar.url, :style => "height:100px;" %></td>
+    <td><%= person.first_name %></td>
+    <td><%= person.last_name %></td>
+    <td><%= auto_link_email_addresses(person.email).html_safe %></td>
+    <td><%= person.phone1 %></td>
     <td class="list-actions">
     <%= link_to I18n.t('views.trombi.list.more_details'), :action => "show_details", :id => person %>
     </td>

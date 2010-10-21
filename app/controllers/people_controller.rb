@@ -18,8 +18,7 @@ class PeopleController < ApplicationController
   def show
     @person = Person.find(params[:id])
 
-    respond_to do |format|
-      format.jpg   # show.jpg.flexi
+    respond_to do |format|      
       format.html # show.html.erb
       format.xml  { render :xml => @person }
     end
@@ -44,10 +43,9 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(params[:person])
     # If no image is chosen, a default file is used.
-      	 if params[:image_file].nil? and params[:image_file_url].nil?
-  	  	  @person.image_file_url="#{HOST_ROOT}/images/default-picture.gif"
-  	  	  puts @person.image_file_url
-  	 end
+    #  	 if params[:avatar].nil?
+    #      @person.avatar.url="#{HOST_ROOT}/images/default-picture.gif"          
+    # end
 
     respond_to do |format|
       if @person.save
@@ -92,8 +90,7 @@ class PeopleController < ApplicationController
 private
 	# Manage the expiration of cached pages and pictures for deleted/updated pages of the  Trombi
 	def expire_person(person)
-		expire_page :controller => "people", :action => "show"
-		expire_page person_path(person, :jpg)
+    expire_page :controller => "people", :action => "show"    
 	end
 
 protected
@@ -103,7 +100,7 @@ protected
 	def authorize
 		 if user=User.find_by_id(session[:user_id])
 			    unless user.level>0
-				    flash[:notice] = I18n.t('flash.login-super')
+				    flash[:warning] = I18n.t('flash.login-super')
 				    redirect_to :controller => "trombi", :action => "login"
 			    end
 		 else

@@ -46,7 +46,7 @@ class TrombiController < ApplicationController
 			elsif params[:commit] == I18n.t('views.trombi.account.change_password')
 			
 				if params[:password] != params[:password_confirmation]
-					flash.now[:notice] = I18n.t('flash.confirmation_not_match')
+					flash.now[:error] = I18n.t('flash.confirmation_not_match')
 				else
 					user = User.authenticate_id(session[:user_id], params[:old_password])
 					if user
@@ -55,7 +55,7 @@ class TrombiController < ApplicationController
 						redirect_to(:controller => "trombi", :action=>"index")
 						flash[:notice] = I18n.t('flash.password_updated')
 					else
-						flash.now[:notice] = I18n.t('controller.trombi.account.wrong_old_password')
+						flash.now[:error] = I18n.t('controller.trombi.account.wrong_old_password')
 					end
 	
 				end
@@ -78,7 +78,7 @@ class TrombiController < ApplicationController
 				  session[:user_default_language]=user.default_language
 				  redirect_to(:controller => "trombi", :action=>"index")
 			  else
-				  flash.now[:notice] = I18n.t('flash.wrong_password')
+				  flash.now[:error] = I18n.t('flash.wrong_password')
 			  end
 		  end
 	end

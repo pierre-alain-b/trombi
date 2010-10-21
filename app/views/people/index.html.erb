@@ -20,13 +20,13 @@
 <% @people.each do |person| %>
   <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
     
-    <td><%=h person.first_name %></td>
-    <td><%=h person.last_name %></td>
-    <td><%=h person.email %></td>
-    <td><%=h person.phone1 %></td>
-    <td><%=h person.phone2 %></td>
-    <td><%=h person.skype_id %></td>
-    <td><%=h person.address %></td>
+    <td><%= person.first_name %></td>
+    <td><%= person.last_name %></td>
+    <td><%= person.email %></td>
+    <td><%= person.phone1 %></td>
+    <td><%= person.phone2 %></td>
+    <td><%= person.skype_id %></td>
+    <td><%= person.address %></td>
     <td class="list-actions">
     	<%= link_to I18n.t('g.show'), person %><br/>
     	<%= link_to I18n.t('g.edit'), edit_person_path(person) %><br/>

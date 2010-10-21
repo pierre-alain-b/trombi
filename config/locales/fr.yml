@@ -28,6 +28,7 @@ fr:
     my_account: Mon compte
     login: Se connecter
     home: Accueil
+    index: Index
   activerecord: 
     errors: 
       messages: 

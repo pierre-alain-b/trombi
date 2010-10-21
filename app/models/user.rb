@@ -51,11 +51,8 @@ class User < ActiveRecord::Base
 	end
 	
 	# Checks that the super-administrator is not deleting the last super-administrator
-	def after_destroy
-		if User.count(:conditions => "level>1").zero?
-			raise "Not permitted to delete the last super administrator user"
-		end
-	end
+  after_destroy :destroy_only_if_someone_left
+    
 		
 	
 	private
@@ -74,5 +71,11 @@ class User < ActiveRecord::Base
 	def create_new_salt
 		self.salt = self.object_id.to_s + rand.to_s
 	end
+  
+  def destroy_only_if_someone_left
+		if User.count(:conditions => "level>1").zero?
+			raise "Not permitted to delete the last super administrator user"
+		end
+	end  
 	
 end

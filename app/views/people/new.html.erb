@@ -5,7 +5,18 @@
 </div>
 
 <% form_for @person, :html => { :multipart => true }  do |f| %>
-  <%= f.error_messages %>
+
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <p>
     <%= f.label I18n.t('g.first_name') %> <span style="color:red;">*</span><br />
@@ -49,7 +60,7 @@
   </p>
   <p>
     <%= f.label I18n.t('g.image_url') %><br />
-    <%= f.file_field :image_file %><br /> <%= I18n.t('g.or_url') %> <%= f.text_field :image_file_url %>
+    <%= f.file_field :avatar %><br />
   </p>
   <p>
     <%= f.submit I18n.t('g.create') %>
