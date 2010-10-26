@@ -10,7 +10,7 @@
 
 <% @people.each do |person| %>
   <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
-    <td><%= image_tag person.avatar.url, :style => "height:100px;" %></td>
+    <td><%= image_tag person.avatar.url(:thumb) %></td>
     <td><%= person.first_name %></td>
     <td><%= person.last_name %></td>
     <td><%= auto_link_email_addresses(person.email).html_safe %></td>

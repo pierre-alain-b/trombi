@@ -9,3 +9,4 @@
 
 #Create a first user to set up the system - this user should preferably be deleted
 User.create(:name => "admin", :password => "password", :password_confirmation => "password", :level => "2", :default_language => "en")
+Person.create(:last_name => "example", :first_name => "example", :email => "example@example.fr")

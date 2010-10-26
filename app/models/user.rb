@@ -3,8 +3,9 @@
 # * name - must be unique and is compulsory
 # * level - must be a number - 0 for a read-only user, 1 for administrators that can add/edit pages, 2 for super-administrators that can manage users
 # * default-language - used to display the proper locale for the application
-class User < ActiveRecord::Base
-	require 'digest/sha1'
+require 'digest/sha1'
+
+class User < ActiveRecord::Base  
 	
 	validates_presence_of :name
 	validates_uniqueness_of :name

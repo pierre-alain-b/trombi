@@ -12,8 +12,9 @@ class Person < ActiveRecord::Base
 	
   has_attached_file :avatar, 
                     :default_url => "/images/:attachment/missing_:style.png",
-                    :styles => { :medium => "300x300>",
-                                 :thumb => "100x100>" }
+                    :styles => { :large => "300x300>",
+                                 :medium => "150x150>",
+                                 :thumb => "80x80>" }
                                 
   validates_attachment_size :avatar, :less_than => 2.megabytes
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png', 'image/gif']
@@ -37,5 +38,5 @@ class Person < ActiveRecord::Base
            else
            	   find(:all, :order => 'LOWER(last_name) ASC')
            end
-       end
+  end
 end
