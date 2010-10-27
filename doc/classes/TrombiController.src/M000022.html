@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>index (TrombiController)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File app/controllers/trombi_controller.rb, line 6</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
+                <span class="ruby-comment cmt"># Retrieve the last three people added</span>
+                <span class="ruby-ivar">@last_three</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:all</span>, <span class="ruby-identifier">:limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;id DESC&quot;</span>)
+                <span class="ruby-comment cmt"># Retrieve an aleatory page - pretty cool to memorize names and pictures !</span>
+                <span class="ruby-ivar">@lottery_winner</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:offset</span> =<span class="ruby-operator">&gt;</span> ( <span class="ruby-constant">Person</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">rand</span> ).<span class="ruby-identifier">to_i</span> )
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
