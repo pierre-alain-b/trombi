@@ -3,11 +3,11 @@
 class TrombiController < ApplicationController
 	
 	# Index page - displayed after login for all users
-	def index
-		# Retrieve the last three people added
-		@last_three = Person.find(:all, :limit => 3, :order => "id DESC")
-		# Retrieve an aleatory page - pretty cool to memorize names and pictures !
-		@lottery_winner = Person.find(:first, :offset => ( Person.count * rand ).to_i )
+  def index    
+		  # Retrieve the last three people added
+		  @last_three = Person.find(:all, :limit => 3, :order => "id DESC")
+		  # Retrieve an aleatory page - pretty cool to memorize names and pictures !
+      @lottery_winner = Person.find(:first, :offset => ( Person.count * rand ).to_i )      
 	end
 	
 	# Displays a list of all people

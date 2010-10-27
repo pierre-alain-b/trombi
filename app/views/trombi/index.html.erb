@@ -6,8 +6,10 @@
 
 <div id="lottery">
 	<h4><%= I18n.t('views.trombi.index.lottery') %></h4>
-	<%= image_tag @lottery_winner.avatar.url(:medium) %><br />
-	<%= @lottery_winner.first_name + " " + @lottery_winner.last_name %> 
+  <% unless @lottery_winner.nil? %>
+     <%= link_to image_tag(@lottery_winner.avatar.url(:medium)), :action => "show_details", :id => @lottery_winner %><br />
+     <%= link_to @lottery_winner.first_name + " " + @lottery_winner.last_name, :action => "show_details", :id => @lottery_winner %>
+  <% end %>
 </div>
 
 	
